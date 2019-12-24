@@ -16,6 +16,7 @@ namespace SnakeConsole
         static List<Block> blocks = new List<Block>();
         static Random rnd = new Random();
         static MoveDirection MoveDirection = MoveDirection.Up;
+        static int Score = 1;
         
         static void Main(string[] args)
         {
@@ -26,7 +27,9 @@ namespace SnakeConsole
             
             // Основной цикл
             while (true)
-            {
+            {             
+                WriteScore();
+                
                 //Читаем ввод
                 GetUserInput();
                 
@@ -99,8 +102,16 @@ namespace SnakeConsole
 
         static void WriteStatus(string text)
         {
+            Console.ResetColor();
             Console.SetCursorPosition(0, maxY + 2);
             Console.WriteLine(text);
+        }
+        
+        static void WriteScore()
+        {
+            Console.ResetColor();
+            Console.SetCursorPosition(0, maxY + 3);
+            Console.WriteLine("Score: " + Score);
         }
         
         /// <summary>
